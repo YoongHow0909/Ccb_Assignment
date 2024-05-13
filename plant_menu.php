@@ -102,26 +102,38 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
 include("helper.php");
 
 $sql = "SELECT * FROM plant";
-
 if(isset($_POST['category']) && !empty($_POST['category'])) {
     $category = $_POST['category'];
-    $sql .= " WHERE plant_cate = '$category'";
+    $sql .= " WHERE plant_cate = :category";
 } 
 if(isset($_POST['searchBar']) && !empty($_POST['searchBar'])) {
     $searchBar = $_POST['searchBar'];
     if(strpos($sql, 'WHERE') !== false) {
-        $sql .= " AND plant_name LIKE '%$searchBar%'";
+        $sql .= " AND plant_name LIKE :search";
     } else {
-        $sql .= " WHERE plant_name LIKE '%$searchBar%'";
+        $sql .= " WHERE plant_name LIKE :search";
     }
 }
 
-$result = $conn->query($sql);
+// Prepare and execute the query
+$stmt = $pdo->prepare($sql);
+if(isset($category)) {
+    $stmt->bindParam(':category', $category);
+}
+if(isset($searchBar)) {
+    $search = "%$searchBar%";
+    $stmt->bindParam(':search', $search);
+}
+$stmt->execute();
 
-if ($result->num_rows > 0) {
+// Fetch the results
+$result = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+// Display the results
+if (count($result) > 0) {
     echo "<div class='plant-container'>";
     $count = 0;
-    while ($row = $result->fetch_assoc()) {
+    foreach ($result as $row) {
         if ($count % 4 == 0) {
             echo "<div class='plant-row'>";
         }
