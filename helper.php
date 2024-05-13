@@ -1,12 +1,18 @@
 <?php
-$db_host = 'localhost';
-$db_username = 'root';
-$db_password = '';
-$db_name = 'gaia_plant';
+$dbhost = 'gaiadb.c524e08e8yjz.us-east-1.rds.amazonaws.com';
+$dbport = '3306';
+$dbname = 'GaiaData';
+$username = 'nbuser';
+$password = 'nbuser';
+$charset = 'utf8' ;
 
-$conn = new mysqli($db_host, $db_username, $db_password, $db_name);
+$dsn = "mysql:host={$dbhost};port={$dbport};dbname={$dbname};charset={$charset}";
 
-if ($conn->connect_errno) {
-    echo "Failed to connect to database " . $conn->connect_error;
+try {
+    $pdo = new PDO($dsn, $username, $password);
+    $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+    echo "Connected successfully";
+} catch (PDOException $e) {
+    echo "Connection failed: " . $e->getMessage();
     exit();
 }
