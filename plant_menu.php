@@ -12,7 +12,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 <link href="gaia_css/plantMenu.css" rel="stylesheet" type="text/css"/>
-<script src="plant_box.js"></script>
+<script src="plant_boxs.js"></script>
 
 <head>
     <meta charset="UTF-8">
@@ -138,10 +138,12 @@ if (count($result) > 0) {
             echo "<div class='plant-row'>";
         }
 
-        $imageFolder = $row["plant_cate"];
-        echo "<div class='plant_list' id='plant_box' onclick=\"openModal('" . $row["plant_name"] . "', " . $row["plant_price"] . ", '" . $imageFolder . "/" . $row["plant_img"] . "', '" . $row["plant_desp"] . "')\">";
-        echo '<img src="image/' . $imageFolder . '/' . $row["plant_img"] . '" alt="' . $row["plant_name"] . '"> <br><br>';
+        $imageFolder = $row["plant_img"];
+        echo "<div class='plant_list'>";
+        echo "<div id='plant_box' onclick=\"openModal('" . $row["plant_name"] . "', '" .  $row["plant_price"] . "', '" . $row["plant_img"] . "', '" . $row["plant_desp"] . "')\">";
+        echo '<img src="' .$imageFolder . '" alt="' . $row["plant_name"] . '"> <br><br>';
         echo  '<span class="plant_details">' . $row["plant_name"] . "<br><b>" . "RM" . $row["plant_price"] . "</b></span><br><br>";
+        echo "</div>";
         echo "<button type='button' class='btn btn-outline-success'>Add to cart</button>";
         echo "</div>";
         

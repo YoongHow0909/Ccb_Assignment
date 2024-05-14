@@ -10,6 +10,7 @@
   <a href="plant_menu.php">Shop</a>
   <a href="#"> Cart</a>
   <a href="#">History</a>
+  <a href="promotion.php">Promotion</a>
   <a href="aboutUs.php">About us</a>
 </div>
 

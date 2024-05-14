@@ -16,7 +16,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
         <p class ="title">Gaia's <br>Garden</p> 
         
         <div class="btn_row">
-            <button class="head_btn" onclick="window.location.href = 'home.php';"><span>Home </span></button>
+            <button class="head_btn" onclick="window.location.href = 'index.php';"><span>Home </span></button>
             <button class="head_btn" onclick="window.location.href = 'aboutUs.php';"><span>About us</span></button>
         <button class="head_btn" onclick="window.location.href = 'plant_menu.php';"><span>Shop</span></button>
         <button class="head_btn" onclick="window.location.href = 'contactUs.php';"><span>Contact us</span></button>
