@@ -6,12 +6,9 @@ $username = 'nbuser';
 $password = 'yoonghow';
 $charset = 'utf8' ;
 
-$dsn = "mysql:host={$dbhost};port={$dbport};dbname={$dbname};charset={$charset}";
+$conn = mysqli_connect($dbhost, $username, $password, $dbname, $dbport);
 
-try {
-    $pdo = new PDO($dsn, $username, $password);
-    $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-} catch (PDOException $e) {
-    echo "Connection failed: " . $e->getMessage();
-    exit();
+if (!$conn) {
+    die("Connection failed: " . mysqli_connect_error());
 }
+

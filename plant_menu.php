@@ -102,38 +102,49 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
 include("helper.php");
 
 $sql = "SELECT * FROM plant";
-if(isset($_POST['category']) && !empty($_POST['category'])) {
+if (isset($_POST['category']) && !empty($_POST['category'])) {
     $category = $_POST['category'];
-    $sql .= " WHERE plant_cate = :category";
+    $sql .= " WHERE plant_cate = ?";
 } 
-if(isset($_POST['searchBar']) && !empty($_POST['searchBar'])) {
+if (isset($_POST['searchBar']) && !empty($_POST['searchBar'])) {
     $searchBar = $_POST['searchBar'];
-    if(strpos($sql, 'WHERE') !== false) {
-        $sql .= " AND plant_name LIKE :search";
+    if (strpos($sql, 'WHERE') !== false) {
+        $sql .= " AND plant_name LIKE ?";
     } else {
-        $sql .= " WHERE plant_name LIKE :search";
+        $sql .= " WHERE plant_name LIKE ?";
     }
 }
 
 // Prepare and execute the query
-$stmt = $pdo->prepare($sql);
-if(isset($category)) {
-    $stmt->bindParam(':category', $category);
+$stmt = $conn->prepare($sql);
+if ($stmt === false) {
+    die("Prepare failed: " . $conn->error);
 }
-if(isset($searchBar)) {
+
+$bindTypes = '';
+$params = [];
+if (isset($category)) {
+    $bindTypes .= 's';
+    $params[] = &$category;
+}
+if (isset($searchBar)) {
     $search = "%$searchBar%";
-    $stmt->bindParam(':search', $search);
+    $bindTypes .= 's';
+    $params[] = &$search;
 }
+
+if (!empty($bindTypes)) {
+    $stmt->bind_param($bindTypes, ...$params);
+}
+
 $stmt->execute();
+$result = $stmt->get_result();
 
 // Fetch the results
-$result = $stmt->fetchAll(PDO::FETCH_ASSOC);
-
-// Display the results
-if (count($result) > 0) {
+if ($result->num_rows > 0) {
     echo "<div class='plant-container'>";
     $count = 0;
-    foreach ($result as $row) {
+    while ($row = $result->fetch_assoc()) {
         if ($count % 4 == 0) {
             echo "<div class='plant-row'>";
         }
@@ -159,6 +170,9 @@ if (count($result) > 0) {
 } else {
     echo "No record found";
 }
+
+$stmt->close();
+$conn->close();
 ?>
 
     <?php

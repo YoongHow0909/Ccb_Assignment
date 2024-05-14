@@ -26,7 +26,7 @@ include('helper.php');
             // Insert data into the database
             $sql = "INSERT INTO plant (plant_id, plant_name, plant_img, plant_price, plant_cate, plant_avail, plant_desp ) 
                     VALUES (:plant_id, :plant_name, :plant_img, :plant_price, :plant_cate, :plant_avail, :plant_desp )";
-            $stmt = $pdo->prepare($sql);
+            $stmt = $conn->prepare($sql);
             $stmt->execute([
                 ':plant_id' => $plant_id,
                 ':plant_name' => $plant_name,
