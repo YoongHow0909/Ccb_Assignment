@@ -11,7 +11,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
-<link href="gaia_css/plantMenu.css" rel="stylesheet" type="text/css"/>
+<link href="gaia_css/plantmenu.css" rel="stylesheet" type="text/css"/>
 <script src="plant_boxs.js"></script>
 
 <head>
@@ -85,7 +85,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
         }
       }
     </script>
-    <button class="right_btn">Add to cart</button><button class="left_btn">Buy Now</button>
+    <button class="right_btn">Add to cart</button><button class="left_btn">Buy Now</button> <!--add to cart -->
     </div>
   </div>
 </div>
@@ -144,7 +144,7 @@ if (count($result) > 0) {
         echo '<img src="' .$imageFolder . '" alt="' . $row["plant_name"] . '"> <br><br>';
         echo  '<span class="plant_details">' . $row["plant_name"] . "<br><b>" . "RM" . $row["plant_price"] . "</b></span><br><br>";
         echo "</div>";
-        echo "<button type='button' class='btn btn-outline-success'>Add to cart</button>";
+        echo "<button type='button' class='btn btn-outline-success'>Add to cart</button>"; //addtocart
         echo "</div>";
         
         $count++;

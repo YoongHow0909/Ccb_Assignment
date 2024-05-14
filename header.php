@@ -4,7 +4,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to c
 Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to edit this template
 -->
 <html>
-    <link href="gaia_css/header.css" rel="stylesheet" type="text/css"/>
+    <link href="gaia_css/head.css" rel="stylesheet" type="text/css"/>
     <head>
         <meta charset="UTF-8">
         <title></title>
@@ -17,6 +17,8 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
         
         <div class="btn_row">
             <button class="head_btn" onclick="window.location.href = 'index.php';"><span>Home </span></button>
+            <button class="head_btn" onclick="window.location.href = 'promotion.php';"><span>Promotion </span></button>
+
             <button class="head_btn" onclick="window.location.href = 'aboutUs.php';"><span>About us</span></button>
         <button class="head_btn" onclick="window.location.href = 'plant_menu.php';"><span>Shop</span></button>
         <button class="head_btn" onclick="window.location.href = 'contactUs.php';"><span>Contact us</span></button>
