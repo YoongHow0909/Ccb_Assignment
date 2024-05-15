@@ -1,9 +1,9 @@
 <?php
-$dbhost = 'gaiagarden.c524e08e8yjz.us-east-1.rds.amazonaws.com';
+$dbhost = 'gaiagardendb.c524e08e8yjz.us-east-1.rds.amazonaws.com';
 $dbport = '3306';
-$dbname = 'gaia_plant';
+$dbname = 'gaiaDB';
 $username = 'nbuser';
-$password = 'yoonghow';
+$password = '12345678';
 $charset = 'utf8' ;
 
 $conn = mysqli_connect($dbhost, $username, $password, $dbname, $dbport);
