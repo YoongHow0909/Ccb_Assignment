@@ -1,5 +1,5 @@
 
-function openModal(plantName, plantPrice, imageUrl, plantDescription) {
+function openModal(voucherName, plantPrice, imageUrl, voucherDescription) {
     // Get the modal element
     var modal = document.getElementById("myModal");
 
@@ -11,10 +11,10 @@ function openModal(plantName, plantPrice, imageUrl, plantDescription) {
 
     var span = document.getElementsByClassName("close")[0];
     // Set the plant details in the modal
-    modalVoucherName.textContent = plantName;
+    modalVoucherName.textContent = voucherName;
     modalVoucherDiscount.textContent = "RM" + plantPrice;
     modalVoucherImage.src = imageUrl;
-    modalVoucherDescription.textContent = plantDescription;
+    modalVoucherDescription.textContent = voucherDescription;
     // Display the modal
     modal.style.display = "block";
 
