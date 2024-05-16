@@ -20,21 +20,22 @@ include('helper.php');
     $plant_avail = trim($_POST["plant_avail"]);
     $plant_desp = trim($_POST["plant_desp"]);
     $target_dir = "image/$plant_cate/";
-    $target_file = $target_dir . basename($_FILES["plant_img"]["name"]);
+    $plant_img = basename($_FILES["plant_img"]["name"]);
+    $target_file = $target_dir . $plant_img;
     
         if (move_uploaded_file($_FILES["plant_img"]["tmp_name"], $target_file)) {
             // Insert data into the database
             $sql = "INSERT INTO plant (plant_id, plant_name, plant_img, plant_price, plant_cate, plant_avail, plant_desp ) 
-                    VALUES (:plant_id, :plant_name, :plant_img, :plant_price, :plant_cate, :plant_avail, :plant_desp )";
+        VALUES (?, ?, ?, ?, ?, ?, ?)";
             $stmt = $conn->prepare($sql);
             $stmt->execute([
-                ':plant_id' => $plant_id,
-                ':plant_name' => $plant_name,
-                ':plant_img' => $target_file,
-                ':plant_price' => $plant_price,
-                ':plant_cate' => $plant_cate,
-                ':plant_avail' => $plant_avail,
-                ':plant_desp' => $plant_desp
+                $plant_id,
+                $plant_name,
+                $plant_img,
+                $plant_price,
+                $plant_cate,
+                $plant_avail,
+                $plant_desp
             ]);
 ?>
 
