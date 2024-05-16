@@ -152,7 +152,7 @@ if ($result->num_rows > 0) {
         $imageFolder = $row["plant_img"];
         echo "<div class='plant_list'>";
         echo "<div id='plant_box' onclick=\"openModal('" . $row["plant_name"] . "', '" .  $row["plant_price"] . "', '" . $row["plant_img"] . "', '" . $row["plant_desp"] . "')\">";
-        echo '<img src="' .$imageFolder . '" alt="' . $row["plant_name"] . '"> <br><br>';
+        echo '<img src="image/'.$row["plant_cate"].'/'.$imageFolder . '" alt="' . $row["plant_name"] . '"> <br><br>';
         echo  '<span class="plant_details">' . $row["plant_name"] . "<br><b>" . "RM" . $row["plant_price"] . "</b></span><br><br>";
         echo "</div>";
         echo "<button type='button' class='btn btn-outline-success'>Add to cart</button>"; //addtocart
